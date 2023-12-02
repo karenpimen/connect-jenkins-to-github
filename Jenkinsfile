@@ -29,7 +29,13 @@ pipeline {
                 sh("${env.WORKSPACE}/scripts/fibonacci.sh ${env.NUMBER}")
             }
         }
-        
+        stage('Change directory') {
+            steps {
+                dir("${env.WORKSPACE}/scripts"){
+                    sh("./fibonacci.sh ${env.NUMBER}")
+                }
+            }
+        }
     }
 }
 
